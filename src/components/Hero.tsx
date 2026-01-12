@@ -1,10 +1,13 @@
 
 import React from 'react';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onNavigate?: (view: any) => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
   return (
     <header id="inicio" className="relative min-h-[900px] h-[100dvh] flex flex-col overflow-hidden bg-slate-900">
-      {/* Background con WebP optimizado */}
       <div className="absolute inset-0 z-0">
         <div 
           className="absolute inset-0 bg-cover bg-center animate-ken-burns"
@@ -15,7 +18,6 @@ const Hero: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-blue-900/40 to-blue-950/95"></div>
       </div>
 
-      {/* Espaciador aumentado para evitar solapamiento con Navbar */}
       <div className="h-40 md:h-52 shrink-0"></div>
 
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto w-full flex-grow flex flex-col justify-start pt-10 pb-48 md:pb-56">
@@ -37,7 +39,7 @@ const Hero: React.FC = () => {
         
         <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
           <button 
-            onClick={() => window.dispatchEvent(new CustomEvent('navigate-to', { detail: 'rooms' }))}
+            onClick={() => onNavigate && onNavigate('rooms')}
             className="w-full sm:w-auto group bg-blue-600 text-white px-12 py-5 rounded-full font-bold transition-all shadow-2xl hover:bg-blue-500 flex items-center justify-center gap-3 hover:scale-105"
           >
             Ver Habitaciones <i className="fa-solid fa-chevron-right text-xs group-hover:translate-x-1 transition-transform"></i>

@@ -2,10 +2,10 @@
 import React from 'react';
 
 const mainServices = [
-  { name: 'Friobar', icon: 'fa-solid fa-snowflake' }, // Cambiado a snowflake por compatibilidad
+  { name: 'Friobar', icon: 'fa-solid fa-snowflake' },
   { name: 'TV con Cable', icon: 'fa-solid fa-tv' },
-  { name: 'Aire Acondicionado', icon: 'fa-solid fa-wind' }, // Cambiado por compatibilidad
-  { name: 'Agua Caliente', icon: 'fa-solid fa-droplet' }, // Cambiado por compatibilidad
+  { name: 'Aire Acondicionado', icon: 'fa-solid fa-wind' },
+  { name: 'Agua Caliente', icon: 'fa-solid fa-droplet' },
   { name: 'Cochera Propia', icon: 'fa-solid fa-car-side' },
   { name: 'Wifi Fibra Óptica', icon: 'fa-solid fa-wifi' },
   { name: 'Camas Amplias', icon: 'fa-solid fa-bed' },
@@ -16,17 +16,17 @@ const extraServices = [
   {
     title: 'Comedor & Bar',
     desc: 'Espacios acogedores para disfrutar de sus desayunos y momentos de relajo con atención cálida.',
-    img: 'https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&q=80&w=2070'
+    img: '/assets/img/service-dining.webp'
   },
   {
     title: 'Alquiler de Cochera',
     desc: 'Contamos con espacios amplios y seguros para vehículos externos bajo vigilancia permanente.',
-    img: 'https://images.unsplash.com/photo-1590674899484-13da0d1b58f5?auto=format&fit=crop&q=80&w=2070'
+    img: '/assets/img/service-parking.webp'
   },
   {
     title: 'Eventos y Reuniones',
     desc: 'Instalaciones equipadas para sus sesiones corporativas, capacitaciones o eventos especiales.',
-    img: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&q=80&w=2070'
+    img: '/assets/img/service-events.webp'
   }
 ];
 
@@ -43,7 +43,6 @@ const Services: React.FC = () => {
           </p>
         </div>
 
-        {/* Grid de Amenidades en Habitación con iconos corregidos */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-24">
           {mainServices.map((service, i) => (
             <div key={i} className="bg-white p-8 rounded-[2rem] shadow-sm hover:shadow-xl transition-all border border-slate-100 flex flex-col items-center text-center group">
@@ -55,7 +54,6 @@ const Services: React.FC = () => {
           ))}
         </div>
 
-        {/* Servicios Destacados */}
         <div className="grid lg:grid-cols-3 gap-10">
           {extraServices.map((item, i) => (
             <div key={i} className="relative group rounded-[2.5rem] overflow-hidden h-[450px] shadow-xl">
@@ -64,9 +62,9 @@ const Services: React.FC = () => {
               <div className="absolute bottom-0 left-0 p-10 text-white">
                 <h4 className="text-2xl font-bold font-serif mb-2">{item.title}</h4>
                 <p className="text-sm text-blue-100/90 leading-relaxed mb-6">{item.desc}</p>
-                <a href="/contacto" className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-blue-400 hover:text-white transition-colors">
-                  Consultar <i className="fa-solid fa-arrow-right"></i>
-                </a>
+                <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-blue-400 hover:text-white transition-colors cursor-pointer">
+                  Consultar Disponibilidad <i className="fa-solid fa-arrow-right"></i>
+                </div>
               </div>
             </div>
           ))}

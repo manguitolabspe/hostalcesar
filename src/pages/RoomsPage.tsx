@@ -8,7 +8,7 @@ const RoomsPage: React.FC = () => {
       {/* Header Independiente */}
       <div className="bg-slate-900 pt-40 pb-24 md:pb-32 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
-            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=2070" className="w-full h-full object-cover" alt="Ambiente Hotel" />
+            <img src="/assets/img/hero-home.webp" className="w-full h-full object-cover" alt="Ambiente Hotel Cesar" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
         </div>
         
@@ -25,7 +25,7 @@ const RoomsPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Grid de Habitaciones (Reutilizando el componente pero en su propia página) */}
+      {/* Grid de Habitaciones */}
       <div className="relative -mt-12 md:-mt-20 z-20 pb-24">
         <Rooms />
       </div>
@@ -59,7 +59,7 @@ const RoomsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Preguntas Frecuentes de Reserva */}
+      {/* Preguntas Frecuentes */}
       <section className="py-24 bg-white border-t border-slate-100">
         <div className="max-w-4xl mx-auto px-6">
             <div className="text-center mb-16">

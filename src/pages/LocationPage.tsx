@@ -8,7 +8,7 @@ const LocationPage: React.FC = () => {
       {/* Header Independiente */}
       <div className="bg-slate-900 pt-40 pb-24 md:pb-32 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
-            <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&q=80&w=2070" className="w-full h-full object-cover" alt="Talara City" />
+            <img src="/assets/img/location-map-bg.webp" className="w-full h-full object-cover" alt="Talara Ciudad" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
         </div>
         

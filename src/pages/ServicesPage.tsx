@@ -8,7 +8,7 @@ const ServicesPage: React.FC = () => {
       {/* Header Independiente */}
       <div className="bg-slate-900 pt-40 pb-24 md:pb-32 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
-            <img src="https://images.unsplash.com/photo-1544124499-58912cbddaad?auto=format&fit=crop&q=80&w=2070" className="w-full h-full object-cover" alt="Servicios Hotel" />
+            <img src="/assets/img/service-dining.webp" className="w-full h-full object-cover" alt="Servicios Hostal Cesar" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
         </div>
         
@@ -55,7 +55,7 @@ const ServicesPage: React.FC = () => {
 
                 <div className="flex-1 w-full relative z-10">
                     <div className="aspect-square rounded-[3rem] overflow-hidden border-8 border-white/5 shadow-2xl">
-                        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=2070" className="w-full h-full object-cover" alt="Corporativo" />
+                        <img src="/assets/img/og-image.webp" className="w-full h-full object-cover" alt="Empresas en Talara" />
                     </div>
                 </div>
             </div>

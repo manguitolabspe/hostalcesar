@@ -59,7 +59,6 @@ const App: React.FC = () => {
         </a>
       </div>
 
-      {/* Modal Global de Reserva */}
       <Modal 
         isOpen={isReservationOpen} 
         onClose={() => setIsReservationOpen(false)} 

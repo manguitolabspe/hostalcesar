@@ -10,7 +10,7 @@ interface HomePageProps {
 const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   return (
     <div className="overflow-hidden">
-      <Hero />
+      <Hero onNavigate={onNavigate} />
       
       {/* 1. Vista Previa Habitaciones */}
       <section className="py-24 bg-white">
@@ -34,7 +34,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                     onClick={() => onNavigate('rooms')}
                     className="h-[500px] rounded-[3rem] overflow-hidden relative group cursor-pointer shadow-xl"
                 >
-                    <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&q=80&w=2070" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Habitación" />
+                    <img src="/assets/img/room-matrimonial.webp" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Habitación Matrimonial Hostal Cesar" />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
                     <div className="absolute bottom-10 left-10 text-white">
                         <p className="text-[10px] uppercase font-bold tracking-widest text-blue-400 mb-2">Más Popular</p>
@@ -46,7 +46,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                         onClick={() => onNavigate('rooms')}
                         className="h-[235px] rounded-[2.5rem] overflow-hidden relative group cursor-pointer shadow-lg"
                     >
-                        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=2070" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Habitación" />
+                        <img src="/assets/img/room-simple.webp" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Habitación Simple Hostal Cesar" />
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
                         <div className="absolute bottom-6 left-8 text-white">
                             <h3 className="text-xl font-bold font-serif">Simple Corporativa</h3>
@@ -56,7 +56,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                         onClick={() => onNavigate('rooms')}
                         className="h-[235px] rounded-[2.5rem] overflow-hidden relative group cursor-pointer shadow-lg"
                     >
-                        <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&q=80&w=2070" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Habitación" />
+                        <img src="/assets/img/room-double.webp" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Habitación Doble Hostal Cesar" />
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
                         <div className="absolute bottom-6 left-8 text-white">
                             <h3 className="text-xl font-bold font-serif">Doble Superior</h3>
@@ -73,7 +73,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <div className="grid lg:grid-cols-2 gap-20 items-center">
                 <div className="order-2 lg:order-1 relative">
                     <div className="aspect-square rounded-[4rem] overflow-hidden shadow-2xl border-8 border-white">
-                        <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&q=80&w=2070" className="w-full h-full object-cover" alt="Comedor" />
+                        <img src="/assets/img/service-dining.webp" className="w-full h-full object-cover" alt="Comedor Hostal Cesar Talara" />
                     </div>
                     <div className="absolute -bottom-10 -right-10 bg-white p-10 rounded-[3rem] shadow-2xl hidden md:block">
                         <i className="fa-solid fa-wifi text-blue-600 text-5xl mb-4"></i>
@@ -109,7 +109,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                     </div>
                 </div>
                 <div className="h-[400px] rounded-[3rem] overflow-hidden shadow-2xl relative grayscale hover:grayscale-0 transition-all duration-700 cursor-pointer" onClick={() => onNavigate('location')}>
-                    <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&q=80&w=2070" className="w-full h-full object-cover" alt="Mapa Talara" />
+                    <img src="/assets/img/location-map-bg.webp" className="w-full h-full object-cover" alt="Ubicación Hostal Cesar Talara" />
                     <div className="absolute inset-0 flex items-center justify-center">
                         <div className="bg-white/90 backdrop-blur-sm px-8 py-4 rounded-full font-bold shadow-xl border border-blue-100 flex items-center gap-3">
                             <i className="fa-solid fa-location-dot text-blue-600"></i>

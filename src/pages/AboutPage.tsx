@@ -72,12 +72,11 @@ const AboutPage: React.FC = () => {
             <div className="relative group">
               <div className="rounded-[4rem] overflow-hidden shadow-2xl aspect-square">
                 <img 
-                  src="https://images.unsplash.com/photo-1541971875076-8f970d573be6?auto=format&fit=crop&q=80&w=2070" 
+                  src="/assets/img/service-events.webp" 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
-                  alt="Personal Hostal Cesar" 
+                  alt="Instalaciones Hostal Cesar" 
                 />
               </div>
-              {/* Distintivo movido al lateral para evitar solapamientos con el Navbar en scroll */}
               <div className="absolute -bottom-10 -left-10 bg-white p-12 rounded-[4rem] shadow-2xl border border-slate-50 hidden md:block">
                 <p className="text-5xl font-bold text-blue-600 font-serif italic">40+</p>
                 <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400 mt-2">Años de Confianza</p>
