@@ -3,20 +3,20 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
     <!-- SEO Básico -->
     <title>Hostal Cesar | Hotel en Talara - Piura | Web Oficial</title>
-    <meta name="description" content="Hostal Cesar en Talara, Piura. El mejor hospedaje corporativo y turístico con 40 años de tradición. Habitaciones con aire acondicionado, wifi y seguridad 24/7 en el corazón de Pariñas.">
+    <meta name="description" content="Hostal Cesar en Talara, Piura. El mejor hospedaje corporativo y turístico con 40 años de tradición. Puerta de entrada a Lobitos y Máncora.">
     <meta name="keywords" content="hotel talara, hostal talara, hospedaje piura, alojamiento talara empresas, hotel cerca aeropuerto talara, hostal cesar talara, reserva hotel talara">
     <meta name="author" content="Hostal Cesar">
     <link rel="canonical" href="https://hostalcesartalara.com/" />
 
-    <!-- Open Graph / Facebook (SEO Social) -->
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hostalcesartalara.com/">
     <meta property="og:title" content="Hostal Cesar | Confort y Seguridad en Talara">
-    <meta property="og:description" content="Reserva tu habitación en el corazón de Talara. Calidez y servicio premium para viajeros de negocios y turistas.">
+    <meta property="og:description" content="Reserva tu habitación en el corazón de Talara. Tu base estratégica para explorar el norte peruano.">
     <meta property="og:image" content="/assets/img/og-image.webp">
 
     <!-- Favicon WebP -->
@@ -36,6 +36,9 @@
           font-family: 'Inter', sans-serif; 
           background-color: var(--tropical-white); 
           overflow-x: hidden;
+          /* Evita que el navegador refresque la página al arrastrar hacia abajo en móviles */
+          overscroll-behavior-y: contain;
+          touch-action: pan-x pan-y;
         }
         h1, h2, h3, h4, .font-serif { font-family: 'Playfair Display', serif; }
         .scroll-smooth { scroll-behavior: smooth; }
@@ -54,52 +57,26 @@
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #0077be; border-radius: 10px; }
+
+        /* Mejora la visualización en dispositivos con notch */
+        @supports(padding: max(0px)) {
+            body {
+                padding-left: min(0px, env(safe-area-inset-left));
+                padding-right: min(0px, env(safe-area-inset-right));
+            }
+        }
     </style>
 
-    <!-- SEO: Datos Estructurados para Google (JSON-LD) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Hotel",
-      "name": "Hostal Cesar",
-      "description": "El mejor hospedaje corporativo y turístico en Talara con 40 años de experiencia.",
-      "image": "https://hostalcesartalara.com/assets/img/hero-home.webp",
-      "logo": "https://hostalcesartalara.com/assets/img/logo-cesar.webp",
-      "url": "https://hostalcesartalara.com/",
-      "telephone": "+51073692594",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Av. Salaverry G 9",
-        "addressLocality": "Talara",
-        "addressRegion": "Piura",
-        "postalCode": "20811",
-        "addressCountry": "PE"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": -4.5807937,
-        "longitude": -81.2764877
-      },
-      "priceRange": "S/ 80 - S/ 150",
-      "amenityFeature": [
-        { "@type": "LocationFeatureSpecification", "name": "WiFi Gratuito", "value": true },
-        { "@type": "LocationFeatureSpecification", "name": "Aire Acondicionado", "value": true },
-        { "@type": "LocationFeatureSpecification", "name": "Cochera Privada", "value": true }
-      ]
-    }
-    </script>
-
     <script type="importmap">
-    {
-      "imports": {
-        "react": "https://esm.sh/react@19.2.3",
-        "react-dom": "https://esm.sh/react-dom@19.2.3",
-        "react-router-dom": "https://esm.sh/react-router-dom@6.22.3",
-        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-        "react/": "https://esm.sh/react@^19.2.3/"
-      }
-    }
-    </script>
+{
+  "imports": {
+    "react": "https://esm.sh/react@19.2.3",
+    "react-dom": "https://esm.sh/react-dom@19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
 <link rel="stylesheet" href="/index.css">
 </head>
 <body class="text-slate-800">

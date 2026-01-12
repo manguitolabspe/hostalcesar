@@ -17,12 +17,41 @@ const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewType>('home');
   const [isReservationOpen, setIsReservationOpen] = useState(false);
 
+  // Sincronizar estado con la URL (Hash) para persistencia al recargar y botón atrás
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '') as ViewType;
+      const validViews: ViewType[] = ['home', 'about', 'rooms', 'services', 'location', 'contact'];
+      
+      if (validViews.includes(hash)) {
+        setCurrentView(hash);
+      } else if (!hash) {
+        // Si no hay hash, por defecto es home
+        setCurrentView('home');
+        window.history.replaceState(null, '', '#home');
+      }
+    };
+
+    // Escuchar cambios en la URL (Botón atrás/adelante)
+    window.addEventListener('popstate', handleHashChange);
+    
+    // Ejecutar al cargar la página por primera vez
+    handleHashChange();
+
+    return () => window.removeEventListener('popstate', handleHashChange);
+  }, []);
+
+  // Scroll al inicio cada vez que cambia la vista
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentView]);
 
   const handleNavigate = (view: ViewType) => {
-    setCurrentView(view);
+    if (view !== currentView) {
+      // Actualizar la URL para que el botón "atrás" funcione
+      window.location.hash = view;
+      setCurrentView(view);
+    }
   };
 
   return (
@@ -44,10 +73,10 @@ const App: React.FC = () => {
 
       <Footer />
       
-      {/* Botón Flotante de WhatsApp */}
+      {/* Botón Flotante de WhatsApp - Marketing: Texto personalizado */}
       <div className="fixed bottom-6 right-6 z-50">
         <a 
-          href="https://wa.me/51989206171" 
+          href={`https://wa.me/51989206171?text=${encodeURIComponent('Hola, quisiera información sobre el Hostal Cesar en Talara.')}`} 
           target="_blank"
           rel="noopener noreferrer"
           className="bg-[#25D366] text-white w-14 h-14 md:w-16 md:h-16 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform group"
