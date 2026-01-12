@@ -26,7 +26,6 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ onSuccess }) => {
     mensaje: ''
   });
 
-  // Estado para el calendario interno
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [tempRange, setTempRange] = useState<{ start: Date | null, end: Date | null }>({
     start: null,
@@ -36,7 +35,6 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ onSuccess }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    // Limpiar error al escribir
     if (errors[name as keyof FormErrors]) {
       setErrors(prev => ({ ...prev, [name]: undefined }));
     }
@@ -68,34 +66,38 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ onSuccess }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
     if (!validateForm()) return;
 
     setIsLoading(true);
 
-    const msg = `🏨 *RESERVA WEB - HOSTAL CESAR* 🏨
-------------------------------------------
-👤 *Cliente:* ${formData.nombre}
-🛏️ *Habitación:* ${formData.habitacion}
-👥 *Huéspedes:* ${formData.huespedes}
+    // Formato Ultra-Limpio para WhatsApp para evitar simbolos raros
+    const lines = [
+      "*RESERVA WEB - HOSTAL CESAR*",
+      "--------------------------",
+      `*Cliente:* ${formData.nombre.trim()}`,
+      `*Habitacion:* ${formData.habitacion}`,
+      `*Huespedes:* ${formData.huespedes}`,
+      "",
+      "*ESTANCIA:*",
+      `*Entrada:* ${formData.fechaIngreso}`,
+      `*Salida:* ${formData.fechaSalida}`,
+      `*Total:* ${estanciaDias} noches`,
+      "",
+      `*Nota:* ${formData.mensaje.trim() || 'Ninguna'}`,
+      "--------------------------",
+      "Enviado desde la Web Oficial"
+    ];
 
-📅 *ESTANCIA:*
-• *Entrada:* ${formData.fechaIngreso}
-• *Salida:* ${formData.fechaSalida}
-• *Total:* ${estanciaDias} noches 🌙
-
-💬 *Nota:* ${formData.mensaje || 'Ninguna'}
-------------------------------------------
-✅ _Enviado desde el Sitio Web Oficial_`;
+    const textMessage = lines.join('\n');
 
     setTimeout(() => {
       setIsLoading(false);
-      window.open(`https://wa.me/51989206171?text=${encodeURIComponent(msg)}`, '_blank');
+      const whatsappUrl = `https://wa.me/51989206171?text=${encodeURIComponent(textMessage)}`;
+      window.open(whatsappUrl, '_blank');
       onSuccess();
-    }, 1000);
+    }, 800);
   };
 
-  // Lógica de renderizado del calendario
   const daysInMonth = (y: number, m: number) => new Date(y, m + 1, 0).getDate();
   const firstDay = (y: number, m: number) => new Date(y, m, 1).getDay();
 
@@ -105,10 +107,8 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ onSuccess }) => {
     const days = [];
     const totalDays = daysInMonth(y, m);
     const startOffset = firstDay(y, m);
-
     for (let i = 0; i < startOffset; i++) days.push(null);
     for (let i = 1; i <= totalDays; i++) days.push(new Date(y, m, i));
-    
     return days;
   }, [currentMonth]);
 
@@ -116,7 +116,6 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ onSuccess }) => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     if (date < today) return;
-
     if (!tempRange.start || (tempRange.start && tempRange.end)) {
       setTempRange({ start: date, end: null });
     } else if (date < tempRange.start) {
@@ -158,7 +157,7 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ onSuccess }) => {
               className={`w-full px-5 py-3.5 rounded-xl transition-all text-sm outline-none border ${errors.nombre ? 'bg-red-50 border-red-200 focus:ring-red-500' : 'bg-slate-50 border-slate-100 focus:ring-blue-500 focus:bg-white'}`} 
               placeholder="Ej. Pedro Pérez" 
             />
-            {errors.nombre && <p className="text-[10px] text-red-500 font-bold ml-1 animate-fade-in">{errors.nombre}</p>}
+            {errors.nombre && <p className="text-[10px] text-red-500 font-bold ml-1">{errors.nombre}</p>}
           </div>
           <div className="space-y-1.5">
             <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 ml-1">Tipo de Habitación</label>
@@ -200,7 +199,7 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ onSuccess }) => {
               <i className="fa-solid fa-calendar-day text-sm"></i>
             </div>
           </button>
-          {errors.fechas && <p className="text-[10px] text-red-500 font-bold ml-1 animate-fade-in">{errors.fechas}</p>}
+          {errors.fechas && <p className="text-[10px] text-red-500 font-bold ml-1">{errors.fechas}</p>}
           {estanciaDias > 0 && !errors.fechas && (
             <p className="text-[10px] font-black text-blue-600 uppercase tracking-widest text-right mt-2 pr-1">
                {estanciaDias} {estanciaDias === 1 ? 'noche' : 'noches'} de estadía
@@ -245,7 +244,6 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ onSuccess }) => {
         </Button>
       </form>
 
-      {/* Sub-Modal del Calendario para el Rango */}
       <Modal 
         isOpen={isCalendarOpen} 
         onClose={() => setIsCalendarOpen(false)} 
@@ -270,7 +268,6 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ onSuccess }) => {
               const past = date < today;
               const sel = isSelected(date);
               const rang = isInRange(date);
-              
               return (
                 <button
                   key={i} type="button" disabled={past}

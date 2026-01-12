@@ -61,7 +61,7 @@ const Footer: React.FC = () => {
           <div className="flex flex-col items-center lg:items-end justify-start space-y-10">
             <h4 className="text-lg font-medium text-gray-400 italic">Redes Sociales</h4>
             <a 
-              href="https://facebook.com" 
+              href="https://web.facebook.com/hostalcesarentalara?locale=es_LA" 
               target="_blank" 
               rel="noopener noreferrer"
               className="group w-24 h-24 bg-white/5 border border-white/10 rounded-[2rem] flex items-center justify-center transition-all hover:bg-[#1877F2] hover:border-[#1877F2] hover:scale-110"

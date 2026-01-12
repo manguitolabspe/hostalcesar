@@ -38,16 +38,13 @@ const ContactPage: React.FC = () => {
     if (formData.fechaIngreso && formData.fechaSalida) {
       const parts1 = formData.fechaIngreso.split('/');
       const parts2 = formData.fechaSalida.split('/');
-      
       if (parts1.length === 3 && parts2.length === 3) {
         const d1 = parseInt(parts1[0], 10);
         const m1 = parseInt(parts1[1], 10) - 1;
         const y1 = parseInt(parts1[2], 10);
-        
         const d2 = parseInt(parts2[0], 10);
         const m2 = parseInt(parts2[1], 10) - 1;
         const y2 = parseInt(parts2[2], 10);
-
         const ingreso = new Date(y1, m1, d1);
         const salida = new Date(y2, m2, d2);
         const diff = salida.getTime() - ingreso.getTime();
@@ -71,7 +68,6 @@ const ContactPage: React.FC = () => {
     if (!formData.email.trim()) newErrors.email = "Email requerido";
     else if (!/^\S+@\S+\.\S+$/.test(formData.email)) newErrors.email = "Email inválido";
     if (!formData.fechaIngreso) newErrors.fechas = "Selecciona fechas";
-    
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -81,26 +77,32 @@ const ContactPage: React.FC = () => {
     if (!validateForm()) return;
     
     setIsLoading(true);
-    const msg = `🏨 *RESERVA WEB - HOSTAL CESAR* 🏨
-------------------------------------------
-👤 *Cliente:* ${formData.nombre}
-📧 *Email:* ${formData.email}
-🛏️ *Habitación:* ${formData.habitacion}
-👥 *Huéspedes:* ${formData.huespedes}
 
-📅 *ESTANCIA:*
-• *Entrada:* ${formData.fechaIngreso}
-• *Salida:* ${formData.fechaSalida}
-• *Total:* ${estanciaDias} noches 🌙
+    const lines = [
+      "*SOLICITUD DE RESERVA*",
+      "--------------------------",
+      `*Cliente:* ${formData.nombre.trim()}`,
+      `*Habitacion:* ${formData.habitacion}`,
+      `*Huespedes:* ${formData.huespedes}`,
+      "",
+      "*ESTANCIA:*",
+      `*Entrada:* ${formData.fechaIngreso}`,
+      `*Salida:* ${formData.fechaSalida}`,
+      `*Total:* ${estanciaDias} noches`,
+      "",
+      `*Email:* ${formData.email.trim()}`,
+      `*Mensaje:* ${formData.mensaje.trim() || 'Sin comentarios'}`,
+      "--------------------------",
+      "Enviado desde el Sitio Web"
+    ];
 
-💬 *Nota:* ${formData.mensaje || 'Ninguna'}
-------------------------------------------
-✅ _Enviado desde el Sitio Web Oficial_`;
+    const textMessage = lines.join('\n');
 
     setTimeout(() => {
       setIsLoading(false);
       setShowToast(true);
-      window.open(`https://wa.me/51989206171?text=${encodeURIComponent(msg)}`, '_blank');
+      const whatsappUrl = `https://wa.me/51989206171?text=${encodeURIComponent(textMessage)}`;
+      window.open(whatsappUrl, '_blank');
     }, 1000);
   };
 
@@ -120,7 +122,6 @@ const ContactPage: React.FC = () => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     if (date < today) return;
-
     if (!tempRange.start || (tempRange.start && tempRange.end)) {
       setTempRange({ start: date, end: null });
     } else if (date < tempRange.start) {

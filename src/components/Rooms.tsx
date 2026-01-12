@@ -37,7 +37,8 @@ const Rooms: React.FC = () => {
   const confirmBooking = () => {
     if (selectedRoom) {
       const msg = `Hola, quisiera reservar la ${selectedRoom.name} en Hostal Cesar Talara.`;
-      window.open(`https://wa.me/51989206171?text=${encodeURIComponent(msg)}`, '_blank');
+      const whatsappUrl = `https://wa.me/51989206171?text=${encodeURIComponent(msg)}`;
+      window.open(whatsappUrl, '_blank');
       setSelectedRoom(null);
     }
   };
