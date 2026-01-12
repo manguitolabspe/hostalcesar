@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hostal Cesar en Talara, Piura. El mejor hospedaje corporativo y turístico con 40 años de tradición. Habitaciones con aire acondicionado, wifi y seguridad 24/7.">
+    <meta name="keywords" content="hotel talara, hostal talara, hospedaje piura, alojamiento talara empresas, hotel cerca aeropuerto talara">
+    <meta name="author" content="Hostal Cesar">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hostalcesartalara.com/">
+    <meta property="og:title" content="Hostal Cesar | Confort y Seguridad en Talara">
+    <meta property="og:description" content="Reserva tu habitación en el corazón de Talara. Calidez y servicio premium para viajeros de negocios.">
+    <meta property="og:image" content="/assets/img/og-image.webp">
+
+    <title>Hostal Cesar | Hotel en Talara - Piura | Web Oficial</title>
+    
+    <link rel="icon" type="image/webp" href="/assets/img/favicon.webp">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --caribbean-blue: #0077be;
+            --tropical-white: #f8fafc;
+        }
+        body { 
+          font-family: 'Inter', sans-serif; 
+          background-color: var(--tropical-white); 
+          overflow-x: hidden;
+        }
+        h1, h2, h3, h4, .font-serif { font-family: 'Playfair Display', serif; }
+        .scroll-smooth { scroll-behavior: smooth; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes kenBurns {
+            from { transform: scale(1); }
+            to { transform: scale(1.15); }
+        }
+        .animate-fade-in-up { animation: fadeInUp 1s ease-out forwards; }
+        .animate-ken-burns { animation: kenBurns 20s ease-in-out infinite alternate; }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #0077be; border-radius: 10px; }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@19.2.3",
+        "react-dom": "https://esm.sh/react-dom@19.2.3",
+        "react-router-dom": "https://esm.sh/react-router-dom@6.22.3",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "react/": "https://esm.sh/react@^19.2.3/"
+      }
+    }
+    </script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="text-slate-800">
+    <div id="root"></div>
+    <script type="module" src="./index.tsx"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
